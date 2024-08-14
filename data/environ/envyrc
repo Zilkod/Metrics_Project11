@@ -1,0 +1,16 @@
+alias reload="exec envy session reload"
+alias switch="exec envy session switch"
+alias commit="exec envy session commit"
+alias rebuild="exec envy environ rebuild"
+
+unset ENV
+
+export USER="${USER:-$(id -u -n)}"
+
+if [ -f ~/.envyrc ]; then
+  source ~/.envyrc
+fi
+
+if [ -f "/home/$ENVY_USER/.envyrc_$USER" ]; then
+  source "/home/$ENVY_USER/.envyrc_$USER"
+fi
